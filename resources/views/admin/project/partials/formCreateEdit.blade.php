@@ -14,6 +14,15 @@
     </div>
 
     <div class="mb-3">
+        <label for="title" class="form-label">Project Type*</label>
+        <select name="type_id" id="name" class="text-uppercase">
+            @foreach ($typeList as $type)
+                <option value="{{ $type->id }}">{{ $type->name }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <div class="mb-3">
         <label for="title" class="form-label">Project URL*</label>
         <input type="text" class="form-control @error('url') is-invalid @enderror" id="title" name="url"
             value="{{ old('url', $project->url) }}">

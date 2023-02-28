@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use Dotenv\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class ProjectController extends Controller
 {
 
     public $validator = [
+        "type_id" => "exists:type,id",
         "title" => "required|unique:Projects|string|min:2|max:100",
         "url" => "required|url",
         "date" => "required|date",
@@ -22,6 +24,8 @@ class ProjectController extends Controller
     ];
 
     public $errorMessage = [
+        "type_id.exists" => 'Il tipo selezionato non esiste!',
+
         "title.required" => 'Inserire un titolo',
         "title.unique" => 'Il titolo è già stato usato! Inserisci un titolo diverso',
         "title.string" => 'Il campo deve contenere una stringa',
@@ -71,7 +75,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.project.create', ["project" => new Project()]);
+        return view('admin.project.create', ["project" => new Project(), "typeList" => Type::all()]);
     }
 
     /**
@@ -114,7 +118,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.project.edit', compact('project'));
+        $typeList = Type::all();
+        return view('admin.project.edit', compact('project', 'typeList'));
     }
 
     /**
