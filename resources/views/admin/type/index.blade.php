@@ -14,13 +14,19 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th class="text-end">
-                    <form action="{{ route('admin.types.store') }}" method="POST">
+                    <form action="{{ route('admin.types.store') }}" method="POST" class="d-flex justify-content-end">
                         @csrf
-                        <input type="text" name="name" placeholder="Enter your type">
+                        <input type="text" name="name" class="form-control w-25 @error('name') is-invalid @enderror"
+                            placeholder="Enter your type">
                         <button class="btn btn-primary">
                             <i class="fa-regular fa-square-plus"></i> Add Type
                         </button>
                     </form>
+                    @error('name')
+                        <div class="text-danger text-end">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </th>
             </tr>
         </thead>
@@ -43,4 +49,8 @@
         </tbody>
     </table>
 
+@endsection
+
+@section('script')
+    @vite(['resources/js/deleteConfirm.js'])
 @endsection

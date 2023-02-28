@@ -8,7 +8,14 @@
         <form action="{{ route('admin.types.update', $type->id) }}" method="POST" class="m-auto">
             @csrf
             @method('PUT')
-            <input type="text" name="name" value="{{ old('name', $type->name) }}">
+            <h2 class="text-center">Edit <span class="text-primary"> {{ $type->name }}</span></h2>
+            <input type="text" name="name" value="{{ old('name', $type->name) }}"
+                class="form-control @error('name') is-invalid @enderror">
+            @error('name')
+                <div class="alert alert-danger">
+                    {{ $message }}
+                </div>
+            @enderror
             <button class="btn btn-success d-block mx-auto mt-3">Save</button>
         </form>
 

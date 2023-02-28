@@ -99,16 +99,17 @@
                             @if ($lastProject->preview_img != null)
 
                                 @if (!$lastProject->isImageUrl())
-                                <img src="{{ asset('storage/' . $lastProject->preview_img) }}" @else <img
-                                        src="{{ $lastProject->preview_img }}" alt="{{ $lastProject->title }}"
-                                        class="img-fluid mb-2">
+                                    <img src="{{ asset('storage/' . $lastProject->preview_img) }}"
+                                        alt{{ $lastProject->title }}" class="img-fluid w-75 mb-2">
+                                @else
+                                    <img src="{{ $lastProject->preview_img }}" alt="{{ $lastProject->title }}"
+                                        alt{{ $lastProject->title }}" class="img-fluid mb-2">
                                 @endif
                             @else
-                                <img src="{{ Vite::asset('resources/img/no-img-available.jpg') }}" @endif
-                                alt{{ $lastProject->title }}"
-                                class="img-fluid w-75 mb-2">
+                                <img src="{{ Vite::asset('resources/img/no-img-available.jpg') }}"
+                                    alt{{ $lastProject->title }}" class="img-fluid w-75 mb-2">
+                            @endif
                         </div>
-                        <span class="fs-4">{{ $lastProject->title }}</span>
                     </div>
                 </div>
 
