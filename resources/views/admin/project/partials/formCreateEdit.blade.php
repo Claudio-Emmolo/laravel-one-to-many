@@ -16,9 +16,16 @@
     <div class="mb-3">
         <label for="title" class="form-label">Project Type*</label>
         <select name="type_id" id="name" class="text-uppercase">
+            <option value="">---</option>
             @foreach ($typeList as $type)
-                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                <option value="{{ $type->id }}"
+                    {{ old('type_id', $project->type_id) == $type->id ? 'selected' : '' }}>
+                    {{ $type->name }}
+                </option>
             @endforeach
+            @error('preview_img')
+                {{ $message }}
+            @enderror
         </select>
     </div>
 

@@ -11,7 +11,7 @@ class Project extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = array('title', 'url', 'date', 'preview_img', 'difficulty', 'tecnologies');
+    protected $fillable = array('type_id', 'title', 'url', 'date', 'preview_img', 'difficulty', 'tecnologies');
 
     // Function for connect Projects table to one Type
     public function type()

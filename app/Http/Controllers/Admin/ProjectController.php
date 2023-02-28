@@ -14,11 +14,11 @@ class ProjectController extends Controller
 {
 
     public $validator = [
-        "type_id" => "exists:type,id",
+        "type_id" => "nullable|exists:types,id",
         "title" => "required|unique:Projects|string|min:2|max:100",
         "url" => "required|url",
         "date" => "required|date",
-        "preview_img" => "nullable",
+        "preview_img" => "nullable|image",
         "difficulty" => "required|numeric|between:1,5",
         "tecnologies" => "required|string|max:255",
     ];
@@ -41,7 +41,7 @@ class ProjectController extends Controller
         "date.required" => 'Inserire una data',
         "date.date" => 'Data non valida o scritta non correttamente',
 
-        "preview_img.url" => 'URL non valido',
+        "preview_img.image" => 'Immagine non corretta',
 
         "difficulty.required" => 'Inserire la difficoltà dell\'esercizio',
         "difficulty.numeric" => 'Il campo può contenere sono numeri',

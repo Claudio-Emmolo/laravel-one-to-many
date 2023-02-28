@@ -13,13 +13,14 @@
                 @if ($project->preview_img != null)
 
                     @if (!$project->isImageUrl())
-                    <img src="{{ asset('storage/' . $project->preview_img) }}" @else <img
-                            src="{{ $project->preview_img }}" alt="{{ $project->title }}" class="img-fluid mb-2">
+                        <img src="{{ asset('storage/' . $project->preview_img) }}" class="img-fluid mb-2">
+                    @else
+                        <img src="{{ $project->preview_img }}" alt="{{ $project->title }}" class="img-fluid mb-2">
                     @endif
                 @else
-                    <img src="{{ Vite::asset('resources/img/no-img-available.jpg') }}" @endif
-                    alt{{ $project->title }}"
-                    class="img-fluid w-75 mb-2">
+                    <img src="{{ Vite::asset('resources/img/no-img-available.jpg') }}" alt{{ $project->title }}"
+                        class="img-fluid w-75 mb-2">
+                @endif
             </div>
             <div class="col-6 pt-3">
                 <h2>
