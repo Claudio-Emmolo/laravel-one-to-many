@@ -17,9 +17,9 @@
                             src="{{ $project->preview_img }}" alt="{{ $project->title }}" class="img-fluid mb-2">
                     @endif
                 @else
-                    <img src="{{ Vite::asset('resources/img/no-img-available.jpg') }}" @endif
-                    alt{{ $project->title }}"
-                    class="img-fluid w-75 mb-2">
+                    <img src="{{ Vite::asset('resources/img/no-img-available.jpg') }}" alt{{ $project->title }}"
+                        class="img-fluid w-75 mb-2">
+                @endif
             </div>
             <div class="col-6 pt-3">
                 <h2>
@@ -36,6 +36,15 @@
                     <span>
                         ({{ $project->difficulty }})
                     </span><br>
+
+
+                    Type:
+                    @if (isset($project->type->name))
+                        <span class="fw-bold text-uppercase"> {{ $project->type->name }} </span> <br>
+                    @else
+                        <span>Nessuna tecnologia inserita </span> <br>
+                    @endif
+
                 <p>
                     Tecnologie usate: <br>
                     {{ $project->tecnologies }}<br>

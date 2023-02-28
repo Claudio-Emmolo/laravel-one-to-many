@@ -36,6 +36,13 @@
                     <span>
                         ({{ $project->difficulty }})
                     </span><br>
+
+                    Type:
+                    @if (isset($project->type->name))
+                        <span class="fw-bold text-uppercase"> {{ $project->type->name }} </span> <br>
+                    @else
+                        <span>Nessuna tecnologia inserita </span> <br>
+                    @endif
                 <p>
                     Tecnologie usate: <br>
                     {{ $project->tecnologies }}<br>
